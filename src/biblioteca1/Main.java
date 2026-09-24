@@ -31,7 +31,10 @@ public class Main {
 		k=sc.nextLine();
 		
 		if (k.equals("1")){
-
+			LibroRepositoryMySQL libroRepositoryMySQL = new LibroRepositoryMySQL();
+			for (Libro libro : libroRepositoryMySQL.obtenerTodos()) {
+				System.out.println(libro);
+			}
 		}else if(k.equals("2")){
 
 		}else if(k.equals("3")){

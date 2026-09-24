@@ -1,0 +1,18 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run Biblioteca",
+      "type": "java",
+      "request": "launch",
+      "mainClass": "biblioteca1.Main",
+      "classPaths": [
+        "${workspaceFolder}/bin",
+        "${workspaceFolder}/librerias/dotenv-java-3.2.0.jar",
+        "${workspaceFolder}/librerias/mysql-connector-j-26.7.0.jar"
+      ],
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}"
+    }
+  ]
+}
