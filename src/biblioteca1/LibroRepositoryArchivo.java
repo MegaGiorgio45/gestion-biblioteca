@@ -74,5 +74,18 @@ public class LibroRepositoryArchivo implements LibroRepository {
 		return leerTodos().stream().filter(l -> l.getTitulo().toLowerCase().contains(titulo.toLowerCase()))
 				.sorted(Comparator.comparing(l -> l.getTitulo())).collect(Collectors.toList());
 	}
+	
+	@Override
+	public List<Libro> buscarPorAutor(String autor) {
+		return leerTodos().stream().filter(l -> l.getAutor().toLowerCase().contains(autor.toLowerCase()))
+				.sorted(Comparator.comparing(l -> l.getAutor())).collect(Collectors.toList());
+	}
+
+	@Override
+	public List<Libro> buscarPorRangoPrecio(double minimo, double maximo) {
+		return leerTodos().stream().filter(l -> l.getPrecio() >= minimo && l.getPrecio() <= maximo)
+				.sorted(Comparator.comparingDouble(l -> l.getPrecio())).collect(Collectors.toList());
+	}
+
 
 }
