@@ -42,7 +42,35 @@ public class LibroRepositoryMySQL implements LibroRepository {
 
     @Override
     public List<Libro> buscarPorTitulo(String titulo) {
-        return new ArrayList<>();
+        List<Libro> libros = new ArrayList<>();
+
+        String sql = "SELECT * FROM libros WHERE titulo LIKE ?";
+
+        try (Connection conexion = ConexionMySQL.conectar();
+             PreparedStatement statement = conexion.prepareStatement(sql)) {
+
+            statement.setString(1, "%" + titulo + "%");
+
+            try (ResultSet resultado = statement.executeQuery()) {
+
+                while (resultado.next()) {
+                    Libro libro = new Libro(
+                        resultado.getInt("id"),
+                        resultado.getString("titulo"),
+                        resultado.getString("autor"),
+                        resultado.getDouble("precio"),
+                        resultado.getInt("stock")
+                    );
+
+                    libros.add(libro);
+                }
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error al consultar MySQL: " + e.getMessage());
+        }
+
+        return libros;
     }
 
     @Override
