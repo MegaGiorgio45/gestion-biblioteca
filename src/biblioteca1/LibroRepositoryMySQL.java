@@ -175,7 +175,27 @@ public class LibroRepositoryMySQL implements LibroRepository {
 
     @Override
     public void insertar(Libro libro) {
-        
+        String sql = "INSERT INTO libros(titulo,autor,precio,stock) VALUES ( ? , ? , ? , ?)";
+         try (Connection conexion = ConexionMySQL.conectar();
+             PreparedStatement statement = conexion.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS)) {
+
+            statement.setString(1, libro.getTitulo);
+            statement.setString(2, libro.getAutor);
+            statement.setDouble(3, libro.getPrecio);
+            statement.setInt(4, libro.getStock);
+
+            int filas = pstmt.executeUpdate();
+			if (filas > 0) {
+				try (ResultSet rs = pstmt.getGeneratedKeys()) {
+					if (rs.next()) {
+						libro.setId(rs.getInt(1)); // asigna el ID
+						return true;
+					}
+				}
+			}catch (SQLException e) {
+			    System.err.println("Error SQL al insertar '");
+			return false;
+
     }
 
     @Override
