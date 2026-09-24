@@ -18,7 +18,7 @@ public class LibroRepositoryArchivo implements LibroRepository {
 	public LibroRepositoryArchivo() {
 		crearArchivoSiNoExiste();
 	}
-	
+
 	public LibroRepositoryArchivo(String rutaArchivo) {
 		this.rutaArchivo = rutaArchivo;
 		crearArchivoSiNoExiste();
@@ -34,7 +34,7 @@ public class LibroRepositoryArchivo implements LibroRepository {
 			System.out.println("Error al crear el archivo: " + e.getMessage());
 		}
 	}
-	
+
 	private List<Libro> leerTodos() {
 		List<Libro> libros = new ArrayList<>();
 		try (BufferedReader br = new BufferedReader(new FileReader(rutaArchivo))) {
@@ -61,7 +61,7 @@ public class LibroRepositoryArchivo implements LibroRepository {
 		}
 		return libros;
 	}
-	
+
 	private void guardarTodos(List<Libro> libros) {
 		try (BufferedWriter bw = new BufferedWriter(new FileWriter(rutaArchivo, false))) {
 			for (Libro l : libros) {
@@ -74,7 +74,7 @@ public class LibroRepositoryArchivo implements LibroRepository {
 			System.out.println("Error al escribir en el archivo: " + e.getMessage());
 		}
 	}
-	
+
 	@Override
 	public List<Libro> obtenerTodos() {
 		return leerTodos();
@@ -85,7 +85,7 @@ public class LibroRepositoryArchivo implements LibroRepository {
 		return leerTodos().stream().filter(l -> l.getTitulo().toLowerCase().contains(titulo.toLowerCase()))
 				.sorted(Comparator.comparing(l -> l.getTitulo())).collect(Collectors.toList());
 	}
-	
+
 	@Override
 	public List<Libro> buscarPorAutor(String autor) {
 		return leerTodos().stream().filter(l -> l.getAutor().toLowerCase().contains(autor.toLowerCase()))
@@ -97,7 +97,7 @@ public class LibroRepositoryArchivo implements LibroRepository {
 		return leerTodos().stream().filter(l -> l.getPrecio() >= minimo && l.getPrecio() <= maximo)
 				.sorted(Comparator.comparingDouble(l -> l.getPrecio())).collect(Collectors.toList());
 	}
-	
+
 	@Override
 	public List<Libro> buscarPorStockMinimo(int stock) {
 		return leerTodos().stream().filter(l -> l.getStock() >= stock)
@@ -116,7 +116,7 @@ public class LibroRepositoryArchivo implements LibroRepository {
 			System.out.println("Error al insertar el libro: " + e.getMessage());
 		}
 	}
-	
+
 	@Override
 	public void eliminarPorTitulo(String titulo) {
 		List<Libro> todos = leerTodos();
@@ -153,15 +153,12 @@ public class LibroRepositoryArchivo implements LibroRepository {
 			System.out.println("No se encontró ningún libro con ese ID.");
 		}
 	}
-	
+
 	@Override
 	public void copiarA(LibroRepository destino) {
 		List<Libro> todos = leerTodos();
 		todos.forEach(l -> destino.insertar(l));
 		System.out.println("Copia realizada con éxito.");
 	}
-
-
-
 
 }
