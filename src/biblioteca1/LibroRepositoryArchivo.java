@@ -105,6 +105,45 @@ public class LibroRepositoryArchivo implements LibroRepository {
 			System.out.println("Error al insertar el libro: " + e.getMessage());
 		}
 	}
+	
+	@Override
+	public void eliminarPorTitulo(String titulo) {
+		List<Libro> todos = leerTodos();
+
+		List<Libro> coincidentes = todos.stream().filter(l -> l.getTitulo().equalsIgnoreCase(titulo))
+				.collect(Collectors.toList());
+
+		if (coincidentes.isEmpty()) {
+			System.out.println("No se encontró ningún libro con el título: " + titulo);
+			return;
+		}
+
+		int idAEliminar;
+
+		if (coincidentes.size() > 1) {
+			System.out.println("Se encontraron varios libros con ese título:");
+			for (Libro l : coincidentes) {
+				System.out.println(l);
+			}
+			java.util.Scanner sc = new java.util.Scanner(System.in);
+			System.out.print("Introduce el ID del libro que deseas eliminar: ");
+			idAEliminar = Integer.parseInt(sc.nextLine());
+		} else {
+			idAEliminar = coincidentes.get(0).getId();
+		}
+
+		final int idFinal = idAEliminar;
+		List<Libro> filtrados = todos.stream().filter(l -> l.getId() != idFinal).collect(Collectors.toList());
+
+		if (filtrados.size() < todos.size()) {
+			guardarTodos(filtrados);
+			System.out.println("Libro eliminado correctamente.");
+		} else {
+			System.out.println("No se encontró ningún libro con ese ID.");
+		}
+	}
+
+
 
 
 }
