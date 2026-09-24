@@ -122,6 +122,19 @@ public class Main {
 					System.out.println("Error en los datos numéricos introducidos.");
 				}
 				break;
+				
+			case "7":
+				System.out.print("Introduce el título del libro a eliminar: ");
+				String tituloEliminar = sc.nextLine();
+				repo.eliminarPorTitulo(tituloEliminar);
+				break;
+
+			case "8":
+				System.out.println("Copiar datos hacia MySQL...");
+				System.out.println(
+						"(Se requiere tener implementada la clase LibroRepositoryMySQL para completar este paso).");
+				break;
+
 
 
 
