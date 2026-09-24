@@ -1,5 +1,8 @@
 package biblioteca1;
 
+import java.util.List;
+import java.util.Scanner;
+
 public class Main {
 
 	public static void main(String[] args) {
@@ -13,7 +16,7 @@ public class Main {
 	}
 
 	public static void menuPrincipal(Scanner sc, LibroRepository repo) {
-		
+
 		boolean salir = false;
 
 		while (!salir) {
@@ -37,7 +40,7 @@ public class Main {
 			System.out.print("\nOpción: ");
 
 			String opcion = sc.nextLine();
-			
+
 			switch (opcion) {
 			case "1":
 				System.out.println("\n--- LISTADO DE LIBROS ---");
@@ -59,7 +62,7 @@ public class Main {
 					porTitulo.forEach(l -> System.out.println(l));
 				}
 				break;
-				
+
 			case "3":
 				System.out.print("Introduce el autor a buscar: ");
 				String a = sc.nextLine();
@@ -87,7 +90,7 @@ public class Main {
 					System.out.println("Error: Debes introducir un número válido.");
 				}
 				break;
-				
+
 			case "5":
 				try {
 					System.out.print("Introduce el stock mínimo: ");
@@ -122,7 +125,7 @@ public class Main {
 					System.out.println("Error en los datos numéricos introducidos.");
 				}
 				break;
-				
+
 			case "7":
 				System.out.print("Introduce el título del libro a eliminar: ");
 				String tituloEliminar = sc.nextLine();
@@ -135,8 +138,16 @@ public class Main {
 						"(Se requiere tener implementada la clase LibroRepositoryMySQL para completar este paso).");
 				break;
 
+			case "0":
+				System.out.println("¡Hasta luego!");
+				salir = true;
+				break;
 
-
-
+			default:
+				System.out.println("\nOpción no válida. Por favor, elija una opción del 0 al 8.");
+				break;
+			}
+		}
 	}
+
 }
