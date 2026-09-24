@@ -63,5 +63,16 @@ public class LibroRepositoryArchivo implements LibroRepository {
 			System.out.println("Error al escribir en el archivo: " + e.getMessage());
 		}
 	}
+	
+	@Override
+	public List<Libro> obtenerTodos() {
+		return leerTodos();
+	}
+
+	@Override
+	public List<Libro> buscarPorTitulo(String titulo) {
+		return leerTodos().stream().filter(l -> l.getTitulo().toLowerCase().contains(titulo.toLowerCase()))
+				.sorted(Comparator.comparing(l -> l.getTitulo())).collect(Collectors.toList());
+	}
 
 }
