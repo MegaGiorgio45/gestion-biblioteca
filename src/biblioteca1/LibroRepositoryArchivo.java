@@ -23,5 +23,32 @@ public class LibroRepositoryArchivo implements LibroRepository {
 			System.out.println("Error al crear el archivo: " + e.getMessage());
 		}
 	}
+	
+	private List<Libro> leerTodos() {
+		List<Libro> libros = new ArrayList<>();
+		try (BufferedReader br = new BufferedReader(new FileReader(rutaArchivo))) {
+			String linea;
+			while ((linea = br.readLine()) != null) {
+				if (!linea.trim().isEmpty()) {
+					String[] partes = linea.split("\\^");
+					if (partes.length >= 5) {
+						int id = Integer.parseInt(partes[0].trim());
+						String titulo = partes[1].trim();
+						String autor = partes[2].trim();
+						double precio = Double.parseDouble(partes[3].trim());
+						int stock = Integer.parseInt(partes[4].trim());
+
+						Libro l = new Libro(id, titulo, autor, precio, stock);
+						libros.add(l);
+					}
+				}
+			}
+		} catch (IOException e) {
+			System.out.println("Error al leer el archivo: " + e.getMessage());
+		} catch (NumberFormatException e) {
+			System.out.println("Error al parsear datos del archivo: " + e.getMessage());
+		}
+		return libros;
+	}
 
 }
