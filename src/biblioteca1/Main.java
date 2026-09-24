@@ -6,148 +6,170 @@ import java.util.Scanner;
 public class Main {
 
 	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
+        
+        LibroRepository repoActivo = seleccionarRepositorio(sc);
 
-		LibroRepository repo = new LibroRepositoryArchivo();
+        if (repoActivo != null) {
+            menuPrincipal(sc, repoActivo);
+        }
 
-		menuPrincipal(sc, repo);
+        sc.close();
+    }
 
-		sc.close();
-	}
+    private static LibroRepository seleccionarRepositorio(Scanner sc) {
+        System.out.println("=== BIENVENIDO AL SISTEMA DE BIBLIOTECA ===");
+        System.out.println("Selecciona el tipo de repositorio con el que deseas trabajar:");
+        System.out.println("1. Archivo de texto (.txt)");
+        System.out.println("2. Base de datos MySQL");
+        System.out.print("Opción: ");
 
-	public static void menuPrincipal(Scanner sc, LibroRepository repo) {
+        String opcion = sc.nextLine();
 
-		boolean salir = false;
+        if (opcion.equals("1")) {
+            System.out.println("\n-> Trabando con Repositorio en Archivo.");
+            return new LibroRepositoryArchivo();
+        } else if (opcion.equals("2")) {
+            System.out.println("\n-> Trabajando con Repositorio MySQL.");
+            return new LibroRepositoryMySQL();
+        } else {
+            System.out.println("\nOpción no válida. Se usará el archivo por defecto.");
+            return new LibroRepositoryArchivo();
+        }
+    }
 
-		while (!salir) {
-			System.out.println("\n--- SISTEMA DE GESTIÓN DE BIBLIOTECA ---");
-			System.out.println("Elije una de las siguientes opciones:\n");
-			System.out.println(
-					"1. Mostrar todos los libros: mostrará por pantalla todos los libros disponibles en el sistema.");
-			System.out.println("2. Buscar libro por título: permite buscar un libro específico por su título.");
-			System.out.println("3. Buscar libros por autor: permite buscar libros de un autor específico.");
-			System.out.println(
-					"4. Buscar libros por rango de precios: permite buscar libros dentro de un rango de precios indicado por el usuario.");
-			System.out.println(
-					"5. Buscar libros por cantidad mínima en stock: permite buscar libros con stock igual o mayor al especificado.");
-			System.out.println(
-					"6. Insertar nuevo libro: el usuario proporcionará id, título, autor, precio y stock del nuevo libro.");
-			System.out.println(
-					"7. Eliminar libro por título: elimina un libro por su título. Si hay varios con el mismo título, el usuario elige por id.");
-			System.out.println(
-					"8. Hacer copia: copia todos los datos del repositorio activo al otro (de archivo a MySQL o viceversa).");
-			System.out.println("0. Salir.");
-			System.out.print("\nOpción: ");
+    public static void menuPrincipal(Scanner sc, LibroRepository repo) {
+        boolean salir = false;
 
-			String opcion = sc.nextLine();
+        while (!salir) {
+            System.out.println("\n--- MENÚ PRINCIPAL ---");
+            System.out.println("1. Mostrar todos los libros");
+            System.out.println("2. Buscar libro por título");
+            System.out.println("3. Buscar libros por autor");
+            System.out.println("4. Buscar libros por rango de precios");
+            System.out.println("5. Buscar libros por cantidad mínima en stock");
+            System.out.println("6. Insertar nuevo libro");
+            System.out.println("7. Eliminar libro por título");
+            System.out.println("8. Hacer copia al otro repositorio");
+            System.out.println("0. Salir");
+            System.out.print("\nElige una opción (0-8): ");
 
-			switch (opcion) {
-			case "1":
-				System.out.println("\n--- LISTADO DE LIBROS ---");
-				List<Libro> todos = repo.obtenerTodos();
-				if (todos.isEmpty()) {
-					System.out.println("No hay libros registrados.");
-				} else {
-					todos.forEach(l -> System.out.println(l)); // forEach con lambda[cite: 15, 16]
-				}
-				break;
+            String opcion = sc.nextLine();
 
-			case "2":
-				System.out.print("Introduce el título o fragmento a buscar: ");
-				String t = sc.nextLine();
-				List<Libro> porTitulo = repo.buscarPorTitulo(t);
-				if (porTitulo.isEmpty()) {
-					System.out.println("No se encontraron libros.");
-				} else {
-					porTitulo.forEach(l -> System.out.println(l));
-				}
-				break;
+            switch (opcion) {
+                case "1":
+                    System.out.println("\n--- LISTADO DE LIBROS ---");
+                    List<Libro> todos = repo.obtenerTodos();
+                    if (todos.isEmpty()) {
+                        System.out.println("No hay libros disponibles.");
+                    } else {
+                        todos.forEach(l -> System.out.println(l)); // Muestra cada libro[cite: 15]
+                    }
+                    break;
 
-			case "3":
-				System.out.print("Introduce el autor a buscar: ");
-				String a = sc.nextLine();
-				List<Libro> porAutor = repo.buscarPorAutor(a);
-				if (porAutor.isEmpty()) {
-					System.out.println("No se encontraron libros de ese autor.");
-				} else {
-					porAutor.forEach(l -> System.out.println(l));
-				}
-				break;
+                case "2":
+                    System.out.print("Introduce el título o fragmento a buscar: ");
+                    String t = sc.nextLine();
+                    List<Libro> porTitulo = repo.buscarPorTitulo(t);
+                    if (porTitulo.isEmpty()) {
+                        System.out.println("No se encontraron libros con ese título.");
+                    } else {
+                        porTitulo.forEach(l -> System.out.println(l));
+                    }
+                    break;
 
-			case "4":
-				try {
-					System.out.print("Introduce precio mínimo: ");
-					double min = Double.parseDouble(sc.nextLine());
-					System.out.print("Introduce precio máximo: ");
-					double max = Double.parseDouble(sc.nextLine());
-					List<Libro> porRango = repo.buscarPorRangoPrecio(min, max);
-					if (porRango.isEmpty()) {
-						System.out.println("No hay libros en ese rango de precios.");
-					} else {
-						porRango.forEach(l -> System.out.println(l));
-					}
-				} catch (NumberFormatException e) {
-					System.out.println("Error: Debes introducir un número válido.");
-				}
-				break;
+                case "3":
+                    System.out.print("Introduce el autor a buscar: ");
+                    String a = sc.nextLine();
+                    List<Libro> porAutor = repo.buscarPorAutor(a);
+                    if (porAutor.isEmpty()) {
+                        System.out.println("No se encontraron libros de ese autor.");
+                    } else {
+                        porAutor.forEach(l -> System.out.println(l));
+                    }
+                    break;
 
-			case "5":
-				try {
-					System.out.print("Introduce el stock mínimo: ");
-					int minStock = Integer.parseInt(sc.nextLine());
-					List<Libro> porStock = repo.buscarPorStockMinimo(minStock);
-					if (porStock.isEmpty()) {
-						System.out.println("No hay libros con ese stock mínimo.");
-					} else {
-						porStock.forEach(l -> System.out.println(l));
-					}
-				} catch (NumberFormatException e) {
-					System.out.println("Error: Debes introducir un número entero.");
-				}
-				break;
+                case "4":
+                    try {
+                        System.out.print("Introduce el precio mínimo: ");
+                        double min = Double.parseDouble(sc.nextLine());
+                        System.out.print("Introduce el precio máximo: ");
+                        double max = Double.parseDouble(sc.nextLine());
+                        List<Libro> porRango = repo.buscarPorRangoPrecio(min, max);
+                        if (porRango.isEmpty()) {
+                            System.out.println("No hay libros dentro de ese rango.");
+                        } else {
+                            porRango.forEach(l -> System.out.println(l));
+                        }
+                    } catch (NumberFormatException e) {
+                        System.out.println("Error: Debes introducir un número válido.");
+                    }
+                    break;
 
-			case "6":
-				try {
-					System.out.print("ID: ");
-					int id = Integer.parseInt(sc.nextLine());
-					System.out.print("Título: ");
-					String titulo = sc.nextLine();
-					System.out.print("Autor: ");
-					String autor = sc.nextLine();
-					System.out.print("Precio: ");
-					double precio = Double.parseDouble(sc.nextLine());
-					System.out.print("Stock: ");
-					int stock = Integer.parseInt(sc.nextLine());
+                case "5":
+                    try {
+                        System.out.print("Introduce la cantidad mínima de stock: ");
+                        int minStock = Integer.parseInt(sc.nextLine());
+                        List<Libro> porStock = repo.buscarPorStockMinimo(minStock);
+                        if (porStock.isEmpty()) {
+                            System.out.println("No hay libros con ese stock mínimo.");
+                        } else {
+                            porStock.forEach(l -> System.out.println(l));
+                        }
+                    } catch (NumberFormatException e) {
+                        System.out.println("Error: Debes introducir un número entero.");
+                    }
+                    break;
 
-					Libro nuevo = new Libro(id, titulo, autor, precio, stock);
-					repo.insertar(nuevo);
-				} catch (NumberFormatException e) {
-					System.out.println("Error en los datos numéricos introducidos.");
-				}
-				break;
+                case "6":
+                    try {
+                        System.out.print("ID (número entero): ");
+                        int id = Integer.parseInt(sc.nextLine());
+                        System.out.print("Título: ");
+                        String titulo = sc.nextLine();
+                        System.out.print("Autor: ");
+                        String autor = sc.nextLine();
+                        System.out.print("Precio: ");
+                        double precio = Double.parseDouble(sc.nextLine());
+                        System.out.print("Stock: ");
+                        int stock = Integer.parseInt(sc.nextLine());
 
-			case "7":
-				System.out.print("Introduce el título del libro a eliminar: ");
-				String tituloEliminar = sc.nextLine();
-				repo.eliminarPorTitulo(tituloEliminar);
-				break;
+                        Libro nuevoLibro = new Libro(id, titulo, autor, precio, stock);
+                        repo.insertar(nuevoLibro);
+                    } catch (NumberFormatException e) {
+                        System.out.println("Error: Asegúrate de introducir números válidos en ID, precio y stock.");
+                    }
+                    break;
 
-			case "8":
-				System.out.println("Copiar datos hacia MySQL...");
-				System.out.println(
-						"(Se requiere tener implementada la clase LibroRepositoryMySQL para completar este paso).");
-				break;
+                case "7":
+                    System.out.print("Introduce el título del libro a eliminar: ");
+                    String tituloEliminar = sc.nextLine();
+                    repo.eliminarPorTitulo(tituloEliminar);
+                    break;
 
-			case "0":
-				System.out.println("¡Hasta luego!");
-				salir = true;
-				break;
+                case "8":
+                    // Si el activo es Archivo, la copia va hacia MySQL y viceversa[cite: 9, 16]
+                    if (repo instanceof LibroRepositoryArchivo) {
+                        System.out.println("Copiando todos los datos del Archivo a la base de datos MySQL...");
+                        LibroRepository destino = new LibroRepositoryMySQL();
+                        repo.copiarA(destino);
+                    } else {
+                        System.out.println("Copiando todos los datos de la base de datos MySQL al Archivo...");
+                        LibroRepository destino = new LibroRepositoryArchivo();
+                        repo.copiarA(destino);
+                    }
+                    break;
 
-			default:
-				System.out.println("\nOpción no válida. Por favor, elija una opción del 0 al 8.");
-				break;
-			}
-		}
-	}
+                case "0":
+                    System.out.println("Saliendo de la aplicación...");
+                    salir = true;
+                    break;
+
+                default:
+                    System.out.println("Opción no válida. Por favor, elige un número del 0 al 8.");
+                    break;
+            }
+        }
+    }
 
 }
