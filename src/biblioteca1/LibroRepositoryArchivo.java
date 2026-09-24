@@ -50,5 +50,18 @@ public class LibroRepositoryArchivo implements LibroRepository {
 		}
 		return libros;
 	}
+	
+	private void guardarTodos(List<Libro> libros) {
+		try (BufferedWriter bw = new BufferedWriter(new FileWriter(rutaArchivo, false))) {
+			for (Libro l : libros) {
+				String linea = l.getId() + "^" + l.getTitulo() + "^" + l.getAutor() + "^" + l.getPrecio() + "^"
+						+ l.getStock();
+				bw.write(linea);
+				bw.newLine();
+			}
+		} catch (IOException e) {
+			System.out.println("Error al escribir en el archivo: " + e.getMessage());
+		}
+	}
 
 }
