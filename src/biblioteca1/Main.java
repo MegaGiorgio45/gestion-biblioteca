@@ -59,6 +59,34 @@ public class Main {
 					porTitulo.forEach(l -> System.out.println(l));
 				}
 				break;
+				
+			case "3":
+				System.out.print("Introduce el autor a buscar: ");
+				String a = sc.nextLine();
+				List<Libro> porAutor = repo.buscarPorAutor(a);
+				if (porAutor.isEmpty()) {
+					System.out.println("No se encontraron libros de ese autor.");
+				} else {
+					porAutor.forEach(l -> System.out.println(l));
+				}
+				break;
+
+			case "4":
+				try {
+					System.out.print("Introduce precio mínimo: ");
+					double min = Double.parseDouble(sc.nextLine());
+					System.out.print("Introduce precio máximo: ");
+					double max = Double.parseDouble(sc.nextLine());
+					List<Libro> porRango = repo.buscarPorRangoPrecio(min, max);
+					if (porRango.isEmpty()) {
+						System.out.println("No hay libros en ese rango de precios.");
+					} else {
+						porRango.forEach(l -> System.out.println(l));
+					}
+				} catch (NumberFormatException e) {
+					System.out.println("Error: Debes introducir un número válido.");
+				}
+				break;
 
 
 	}
