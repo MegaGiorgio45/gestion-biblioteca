@@ -142,6 +142,13 @@ public class LibroRepositoryArchivo implements LibroRepository {
 			System.out.println("No se encontró ningún libro con ese ID.");
 		}
 	}
+	
+	@Override
+	public void copiarA(LibroRepository destino) {
+		List<Libro> todos = leerTodos();
+		todos.forEach(l -> destino.insertar(l));
+		System.out.println("Copia realizada con éxito.");
+	}
 
 
 
