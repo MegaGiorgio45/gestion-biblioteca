@@ -87,6 +87,42 @@ public class Main {
 					System.out.println("Error: Debes introducir un número válido.");
 				}
 				break;
+				
+			case "5":
+				try {
+					System.out.print("Introduce el stock mínimo: ");
+					int minStock = Integer.parseInt(sc.nextLine());
+					List<Libro> porStock = repo.buscarPorStockMinimo(minStock);
+					if (porStock.isEmpty()) {
+						System.out.println("No hay libros con ese stock mínimo.");
+					} else {
+						porStock.forEach(l -> System.out.println(l));
+					}
+				} catch (NumberFormatException e) {
+					System.out.println("Error: Debes introducir un número entero.");
+				}
+				break;
+
+			case "6":
+				try {
+					System.out.print("ID: ");
+					int id = Integer.parseInt(sc.nextLine());
+					System.out.print("Título: ");
+					String titulo = sc.nextLine();
+					System.out.print("Autor: ");
+					String autor = sc.nextLine();
+					System.out.print("Precio: ");
+					double precio = Double.parseDouble(sc.nextLine());
+					System.out.print("Stock: ");
+					int stock = Integer.parseInt(sc.nextLine());
+
+					Libro nuevo = new Libro(id, titulo, autor, precio, stock);
+					repo.insertar(nuevo);
+				} catch (NumberFormatException e) {
+					System.out.println("Error en los datos numéricos introducidos.");
+				}
+				break;
+
 
 
 	}
