@@ -13,6 +13,7 @@ public class Libro {
         this.autor = autor;
         this.precio = precio;
         this.stock = stock;
+        
     }
 
     public int getId() {
