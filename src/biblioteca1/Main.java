@@ -37,6 +37,29 @@ public class Main {
 			System.out.print("\nOpción: ");
 
 			String opcion = sc.nextLine();
+			
+			switch (opcion) {
+			case "1":
+				System.out.println("\n--- LISTADO DE LIBROS ---");
+				List<Libro> todos = repo.obtenerTodos();
+				if (todos.isEmpty()) {
+					System.out.println("No hay libros registrados.");
+				} else {
+					todos.forEach(l -> System.out.println(l)); // forEach con lambda[cite: 15, 16]
+				}
+				break;
+
+			case "2":
+				System.out.print("Introduce el título o fragmento a buscar: ");
+				String t = sc.nextLine();
+				List<Libro> porTitulo = repo.buscarPorTitulo(t);
+				if (porTitulo.isEmpty()) {
+					System.out.println("No se encontraron libros.");
+				} else {
+					porTitulo.forEach(l -> System.out.println(l));
+				}
+				break;
+
 
 	}
 }
