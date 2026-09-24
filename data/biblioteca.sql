@@ -1,0 +1,11 @@
+CREATE DATABASE IF NOT EXISTS biblioteca;
+
+USE biblioteca;
+
+CREATE TABLE IF NOT EXISTS libros (
+    id VARCHAR(50) PRIMARY KEY,
+    titulo VARCHAR(255) NOT NULL,
+    autor VARCHAR(255) NOT NULL,
+    precio DOUBLE NOT NULL,
+    stock INT NOT NULL
+);
