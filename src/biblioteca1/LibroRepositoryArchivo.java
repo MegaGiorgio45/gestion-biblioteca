@@ -86,6 +86,25 @@ public class LibroRepositoryArchivo implements LibroRepository {
 		return leerTodos().stream().filter(l -> l.getPrecio() >= minimo && l.getPrecio() <= maximo)
 				.sorted(Comparator.comparingDouble(l -> l.getPrecio())).collect(Collectors.toList());
 	}
+	
+	@Override
+	public List<Libro> buscarPorStockMinimo(int stock) {
+		return leerTodos().stream().filter(l -> l.getStock() >= stock)
+				.sorted(Comparator.comparingInt(l -> l.getStock())).collect(Collectors.toList());
+	}
+
+	@Override
+	public void insertar(Libro libro) {
+		try (BufferedWriter bw = new BufferedWriter(new FileWriter(rutaArchivo, true))) {
+			String linea = libro.getId() + "^" + libro.getTitulo() + "^" + libro.getAutor() + "^" + libro.getPrecio()
+					+ "^" + libro.getStock();
+			bw.write(linea);
+			bw.newLine();
+			System.out.println("Libro insertado correctamente en el archivo.");
+		} catch (IOException e) {
+			System.out.println("Error al insertar el libro: " + e.getMessage());
+		}
+	}
 
 
 }
