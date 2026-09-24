@@ -50,7 +50,7 @@ public class Main {
 			
 		}else if(k.equals("9")){
 			
-		}else if(k.equals("Salir")){
+		}else if(k.equals("0")){
 
 		}else{
 			System.out.println("\n\nOpción no válida. Por favor, elija una opción del 0 al 8.");
