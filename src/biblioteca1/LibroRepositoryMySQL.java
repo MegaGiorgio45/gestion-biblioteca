@@ -175,14 +175,45 @@ public class LibroRepositoryMySQL implements LibroRepository {
 
     @Override
     public void insertar(Libro libro) {
-        
+        String sql = "INSERT INTO libros (titulo, autor, precio, stock) VALUES (?, ?, ?, ?)";
+
+        try (Connection conexion = ConexionMySQL.conectar();
+             PreparedStatement statement = conexion.prepareStatement(sql)) {
+
+            statement.setString(1, libro.getTitulo());
+            statement.setString(2, libro.getAutor());
+            statement.setDouble(3, libro.getPrecio());
+            statement.setInt(4, libro.getStock());
+
+            statement.executeUpdate();
+            System.out.println("Libro insertado correctamente en MySQL.");
+        } catch (SQLException e) {
+            System.out.println("Error al insertar en MySQL: " + e.getMessage());
+        }
     }
 
     @Override
     public void eliminarPorTitulo(String titulo) {
+        String sql = "DELETE FROM libros WHERE titulo = ?";
+
+        try (Connection conexion = ConexionMySQL.conectar();
+             PreparedStatement statement = conexion.prepareStatement(sql)) {
+
+            statement.setString(1, titulo);
+            statement.executeUpdate();
+            System.out.println("Libro eliminado correctamente de MySQL.");
+
+        } catch (SQLException e) {
+            System.out.println("Error al eliminar en MySQL: " + e.getMessage());
+        }
     }
 
     @Override
     public void copiarA(LibroRepository destino) {
+        List<Libro> libros = this.obtenerTodos();
+        for (Libro libro : libros) {
+            destino.insertar(libro);
+        }
+        System.out.println("Datos copiados correctamente a " + destino.getClass().getSimpleName());
     }
 }
