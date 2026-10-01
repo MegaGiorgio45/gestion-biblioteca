@@ -27,6 +27,11 @@ public class LibroRepositoryArchivo implements LibroRepository {
 		crearArchivoSiNoExiste();
 	}
 
+	/**
+     * Construye un repositorio especificando una ruta personalizada para el archivo de texto.
+     *
+     * @param rutaArchivo la ruta o nombre del archivo que se utilizará para especificar la ruta.
+     */
 	public LibroRepositoryArchivo(String rutaArchivo) {
 		this.rutaArchivo = rutaArchivo;
 		crearArchivoSiNoExiste();
