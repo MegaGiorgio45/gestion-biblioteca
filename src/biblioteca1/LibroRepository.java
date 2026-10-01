@@ -11,6 +11,12 @@ public interface LibroRepository {
      */
     List<Libro> obtenerTodos();
 
+       /**
+     * Busca libros cuyo título contenga el fragmento especificado.
+     *
+     * @param titulo la cadena de texto con el título a buscar.
+     * @return una lista de objetos que coinciden con el título facilitado.
+     */
     List<Libro> buscarPorTitulo(String titulo);
 
     List<Libro> buscarPorAutor(String autor);
