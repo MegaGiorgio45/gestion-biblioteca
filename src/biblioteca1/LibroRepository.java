@@ -51,6 +51,14 @@ public interface LibroRepository {
      */
     void insertar(Libro libro);
 
+    /**
+     * Elimina del registro los datos del libro cuyo título coincida con el texto recibido.
+     * 
+     * En caso de existir múltiples coincidencias, se solicita su ID.
+     *
+     * @param titulo el título del libro que se desea eliminar.
+     */
+
     void eliminarPorTitulo(String titulo);
 
     void copiarA(LibroRepository destino);
