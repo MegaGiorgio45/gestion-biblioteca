@@ -61,5 +61,10 @@ public interface LibroRepository {
 
     void eliminarPorTitulo(String titulo);
 
+     /**
+     * Transfiere la totalidad de registros almacenados hacia un repositorio de destino.
+     *
+     * @param destino la implementación de donde se copiarán los datos.
+     */
     void copiarA(LibroRepository destino);
 }
