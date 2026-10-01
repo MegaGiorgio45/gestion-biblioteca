@@ -36,6 +36,12 @@ public interface LibroRepository {
      */
     List<Libro> buscarPorRangoPrecio(double minimo, double maximo);
 
+    /**
+     * Busca libros cuya cantidad disponible en inventario sea igual o superior a la indicación.
+     *
+     * @param stock la cantidad mínima de stock requerida.
+     * @return una lista de objetos que cumplen la condición de stock mínimo.
+     */
     List<Libro> buscarPorStockMinimo(int stock);
 
     void insertar(Libro libro);
