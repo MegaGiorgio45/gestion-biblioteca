@@ -19,6 +19,12 @@ public interface LibroRepository {
      */
     List<Libro> buscarPorTitulo(String titulo);
 
+     /**
+     * Busca libros cuyo autor contenga el texto especificado.
+     *
+     * @param autor el nombre del autor a filtrar.
+     * @return una lista de objetos asociados al autor indicado.
+     */
     List<Libro> buscarPorAutor(String autor);
 
     List<Libro> buscarPorRangoPrecio(double minimo, double maximo);
