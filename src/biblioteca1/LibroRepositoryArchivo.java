@@ -37,6 +37,11 @@ public class LibroRepositoryArchivo implements LibroRepository {
 		crearArchivoSiNoExiste();
 	}
 
+	/**
+     * Verifica la existencia física del archivo de datos en disco.
+     * 
+     * En caso de que el archivo no exista, ejecuta para crearlo vacío.
+     */
 	private void crearArchivoSiNoExiste() {
 		try {
 			File f = new File(rutaArchivo);
