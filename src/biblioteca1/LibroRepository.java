@@ -27,6 +27,13 @@ public interface LibroRepository {
      */
     List<Libro> buscarPorAutor(String autor);
 
+    /**
+     * Filtra la lista de libros cuyo precio se encuentre dentro del rango inclusivo especificado.
+     *
+     * @param minimo el límite inferior de precio a consultar.
+     * @param maximo el límite superior de precio a consultar.
+     * @return una lista de objetos dentro del rango de precio indicado.
+     */
     List<Libro> buscarPorRangoPrecio(double minimo, double maximo);
 
     List<Libro> buscarPorStockMinimo(int stock);
