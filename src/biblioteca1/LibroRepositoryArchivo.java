@@ -18,6 +18,11 @@ public class LibroRepositoryArchivo implements LibroRepository {
      */
 	private String rutaArchivo = "libros.txt";
 
+	/**
+     * Construye un repositorio asignando la ruta por defecto.
+     * 
+     * Verifica la existencia del fichero en el almacenamiento y lo crea en caso de no existir.
+     */
 	public LibroRepositoryArchivo() {
 		crearArchivoSiNoExiste();
 	}
