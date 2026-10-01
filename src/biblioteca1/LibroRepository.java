@@ -44,6 +44,11 @@ public interface LibroRepository {
      */
     List<Libro> buscarPorStockMinimo(int stock);
 
+      /**
+     * Inserta un nuevo objeto en el almacenamiento persistente.
+     *
+     * @param libro el objeto que se va a almacenar.
+     */
     void insertar(Libro libro);
 
     void eliminarPorTitulo(String titulo);
