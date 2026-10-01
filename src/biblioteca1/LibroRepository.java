@@ -4,6 +4,11 @@ import java.util.List;
 
 public interface LibroRepository {
 
+     /**
+     * Obtiene el listado completo de libros registrados en el origen de datos.
+     *
+     * @return una lista de objetos con todos los registros encontrados.
+     */
     List<Libro> obtenerTodos();
 
     List<Libro> buscarPorTitulo(String titulo);
