@@ -13,6 +13,9 @@ import java.util.stream.Collectors;
 
 public class LibroRepositoryArchivo implements LibroRepository {
 
+	/**
+     * Ruta relativa o absoluta del archivo de texto en disco.
+     */
 	private String rutaArchivo = "libros.txt";
 
 	public LibroRepositoryArchivo() {
