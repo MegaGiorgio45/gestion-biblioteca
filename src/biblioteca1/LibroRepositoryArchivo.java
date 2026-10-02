@@ -106,29 +106,44 @@ public class LibroRepositoryArchivo implements LibroRepository {
 		}
 	}
 
+	/**
+     * {@inheritDoc}
+     */
 	@Override
 	public List<Libro> obtenerTodos() {
 		return leerTodos();
 	}
 
+	/**
+     * {@inheritDoc}
+     */
 	@Override
 	public List<Libro> buscarPorTitulo(String titulo) {
 		return leerTodos().stream().filter(l -> l.getTitulo().toLowerCase().contains(titulo.toLowerCase()))
 				.sorted(Comparator.comparing(l -> l.getTitulo())).collect(Collectors.toList());
 	}
 
+	/**
+     * {@inheritDoc}
+     */
 	@Override
 	public List<Libro> buscarPorAutor(String autor) {
 		return leerTodos().stream().filter(l -> l.getAutor().toLowerCase().contains(autor.toLowerCase()))
 				.sorted(Comparator.comparing(l -> l.getAutor())).collect(Collectors.toList());
 	}
 
+	/**
+     * {@inheritDoc}
+     */
 	@Override
 	public List<Libro> buscarPorRangoPrecio(double minimo, double maximo) {
 		return leerTodos().stream().filter(l -> l.getPrecio() >= minimo && l.getPrecio() <= maximo)
 				.sorted(Comparator.comparingDouble(l -> l.getPrecio())).collect(Collectors.toList());
 	}
 
+	/**
+     * {@inheritDoc}
+     */
 	@Override
 	public List<Libro> buscarPorStockMinimo(int stock) {
 		return leerTodos().stream().filter(l -> l.getStock() >= stock)
@@ -185,6 +200,9 @@ public class LibroRepositoryArchivo implements LibroRepository {
 		}
 	}
 
+	/**
+     * {@inheritDoc}
+     */
 	@Override
 	public void copiarA(LibroRepository destino) {
 		List<Libro> todos = leerTodos();
