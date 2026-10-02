@@ -58,6 +58,12 @@ public class Main {
         }
     }
 
+    /**
+     * Muestra el menú de opciones interactivas y procesa las operaciones seleccionadas.
+     *
+     * @param sc el objeto {@link Scanner} para capturar los datos ingresados por pantalla.
+     * @param repo el repositorio activo {@link LibroRepository} que ejecutará las operaciones.
+     */
     public static void menuPrincipal(Scanner sc, LibroRepository repo) {
         boolean salir = false;
 
