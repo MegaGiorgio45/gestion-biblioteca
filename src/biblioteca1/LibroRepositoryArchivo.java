@@ -11,6 +11,18 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Guarda y gestiona los libros en un fichero de texto plano.
+ * <p>
+ * Los datos de cada libro se escriben en una linea separando sus campos 
+ * con el caracter '^'.
+ *
+ * @author MegaGiorgio45
+ * @version 1.0
+ * @see LibroRepository
+ * @see Libro
+ * @since 1.0
+ */
 public class LibroRepositoryArchivo implements LibroRepository {
 
 	/**
