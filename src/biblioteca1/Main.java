@@ -3,6 +3,15 @@ package biblioteca1;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Clase principal que inicializa el sistema interactivo de gestión de biblioteca.
+ * <p>
+ * Proporciona el menú en consola y gestiona la alternancia entre orígenes de datos 
+ *
+ * @author MegaGiorgio45
+ * @version 1.0
+ * @since 1.0
+ */
 public class Main {
 
 	public static void main(String[] args) {
