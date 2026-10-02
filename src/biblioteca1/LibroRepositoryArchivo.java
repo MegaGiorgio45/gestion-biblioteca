@@ -168,6 +168,11 @@ public class LibroRepositoryArchivo implements LibroRepository {
 		}
 	}
 
+	/**
+     * {@inheritDoc}
+     * <p>
+     * Si existen varios coincidencias, solicita la ID concreta por la entrada estándar.
+     */
 	@Override
 	public void eliminarPorTitulo(String titulo) {
 		List<Libro> todos = leerTodos();
