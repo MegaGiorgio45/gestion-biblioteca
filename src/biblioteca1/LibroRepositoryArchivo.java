@@ -88,6 +88,11 @@ public class LibroRepositoryArchivo implements LibroRepository {
 		return libros;
 	}
 
+	/**
+     * Sobrescribe completamente el archivo de texto con los elementos de la lista recibida.
+     *
+     * @param libros la lista de objetos a serializar en el fichero.
+     */
 	private void guardarTodos(List<Libro> libros) {
 		try (BufferedWriter bw = new BufferedWriter(new FileWriter(rutaArchivo, false))) {
 			for (Libro l : libros) {
