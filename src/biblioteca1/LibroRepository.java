@@ -2,6 +2,16 @@ package biblioteca1;
 
 import java.util.List;
 
+/**
+ * Interfaz que define las operaciones para gestionar y guardar libros.
+ * <p>
+ * Sirve de plantilla tanto si los datos se guardan en ficheros de texto 
+ * como si se guardan en una base de datos MySQL.
+ *
+ * @author MegaGiorgio45
+ * @version 1.0
+ * @since 1.0
+ */
 public interface LibroRepository {
 
      /**
