@@ -14,7 +14,12 @@ import java.util.Scanner;
  */
 public class Main {
 
-	public static void main(String[] args) {
+	 /**
+     * Punto de entrada principal a la ejecución del programa.
+     *
+     * @param args argumentos de línea de comandos pasados durante el inicio.
+     */
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         
         LibroRepository repoActivo = seleccionarRepositorio(sc);
