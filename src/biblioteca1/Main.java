@@ -31,6 +31,12 @@ public class Main {
         sc.close();
     }
 
+    /**
+     * Permite al usuario seleccionar el origen de datos deseado.
+     *
+     * @param sc el objeto {@link Scanner} para la lectura de la consola.
+     * @return la instancia del tipo {@link LibroRepository} elegida por el usuario.
+     */
     private static LibroRepository seleccionarRepositorio(Scanner sc) {
         System.out.println("=== BIENVENIDO AL SISTEMA DE BIBLIOTECA ===");
         System.out.println("Selecciona el tipo de repositorio con el que deseas trabajar:");
