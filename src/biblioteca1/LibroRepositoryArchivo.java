@@ -150,6 +150,11 @@ public class LibroRepositoryArchivo implements LibroRepository {
 				.sorted(Comparator.comparingInt(l -> l.getStock())).collect(Collectors.toList());
 	}
 
+	/**
+     * {@inheritDoc}
+     * <p>
+     * Escribe la nueva entrada al final del archivo configurando el parámetro {@code append} en {@code true}.
+     */
 	@Override
 	public void insertar(Libro libro) {
 		try (BufferedWriter bw = new BufferedWriter(new FileWriter(rutaArchivo, true))) {
