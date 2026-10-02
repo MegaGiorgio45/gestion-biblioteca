@@ -53,6 +53,14 @@ public class LibroRepositoryArchivo implements LibroRepository {
 		}
 	}
 
+	/**
+     * Lee y procesa las líneas del fichero formateadas con el separador.
+     *
+     * Parsea cada campo a sus tipos correspondientes y construye una lista.
+     *
+     * @return una lista con todos los objetos recuperados del archivo.
+     * @throws NumberFormatException si la conversión de campos numéricos resulta inválida.
+     */
 	private List<Libro> leerTodos() {
 		List<Libro> libros = new ArrayList<>();
 		try (BufferedReader br = new BufferedReader(new FileReader(rutaArchivo))) {
