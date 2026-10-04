@@ -1,11 +1,25 @@
 package main.java.biblioteca1;
+
+
+/**
+ * Clase que representa un libro en la biblioteca.
+ * 
+ * @author Guillermo
+ */
 public class Libro {
     public int id;
     public String titulo;
     public String autor;
     public double precio;
     public int stock;
-
+    /**
+     * Constructor de la clase Libro.
+     * @param id 
+     * @param titulo
+     * @param autor
+     * @param precio
+     * @param stock
+     */
     public Libro(int id, String titulo, String autor, double precio, int stock) {
         this.id = id;
         this.titulo = titulo;
