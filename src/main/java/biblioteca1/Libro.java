@@ -1,5 +1,4 @@
-package biblioteca1;
-
+package main.java.biblioteca1;
 public class Libro {
     public int id;
     public String titulo;
