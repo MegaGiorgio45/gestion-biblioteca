@@ -2,7 +2,6 @@
 variables.env
 
 # Java / Maven build output
-/target/
 /bin/
 *.class
 *.jar

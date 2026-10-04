@@ -1,0 +1,46 @@
+-J-Duser.language=
+-J-Duser.country=
+@options
+@packages
+--no-fonts
+-classpath
+'C:/Users/Guille/.m2/repository/io/github/cdimascio/dotenv-java/3.0.0/dotenv-java-3.0.0.jar'
+-encoding
+'UTF-8'
+-protected
+-source
+'17'
+-sourcepath
+'C:/Users/Guille/Desktop/projecto/gestion-biblioteca/src/main/java'
+-author
+-bottom
+'Copyright &#169; 1980. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'C:/Users/Guille/Desktop/projecto/gestion-biblioteca/target/reports/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'biblioteca1 1.0.0 API'
+-notimestamp
+-use
+-version
+-windowtitle
+'biblioteca1 1.0.0 API'
+biblioteca1
+C:\Users\Guille\.m2\repository\io\github\cdimascio\dotenv-java\3.0.0\dotenv-java-3.0.0.jar = 1790246677680
+C:\Users\Guille\Desktop\projecto\gestion-biblioteca\src\main\java = 1791137527315
+C:\Users\Guille\Desktop\projecto\gestion-biblioteca\target\reports\apidocs\allclasses-index.html = 1791142102003
+C:\Users\Guille\Desktop\projecto\gestion-biblioteca\target\reports\apidocs\allpackages-index.html = 1791142102006
+C:\Users\Guille\Desktop\projecto\gestion-biblioteca\target\reports\apidocs\element-list = 1791142101923
+C:\Users\Guille\Desktop\projecto\gestion-biblioteca\target\reports\apidocs\help-doc.html = 1791142102041
+C:\Users\Guille\Desktop\projecto\gestion-biblioteca\target\reports\apidocs\index-all.html = 1791142102032
+C:\Users\Guille\Desktop\projecto\gestion-biblioteca\target\reports\apidocs\index.html = 1791142102036
+C:\Users\Guille\Desktop\projecto\gestion-biblioteca\target\reports\apidocs\member-search-index.js = 1791142102013
+C:\Users\Guille\Desktop\projecto\gestion-biblioteca\target\reports\apidocs\module-search-index.js = 1791142102008
+C:\Users\Guille\Desktop\projecto\gestion-biblioteca\target\reports\apidocs\overview-tree.html = 1791142101989
+C:\Users\Guille\Desktop\projecto\gestion-biblioteca\target\reports\apidocs\package-search-index.js = 1791142102010
+C:\Users\Guille\Desktop\projecto\gestion-biblioteca\target\reports\apidocs\search.html = 1791142102034
+C:\Users\Guille\Desktop\projecto\gestion-biblioteca\target\reports\apidocs\tag-search-index.js = 1791142102014
+C:\Users\Guille\Desktop\projecto\gestion-biblioteca\target\reports\apidocs\type-search-index.js = 1791142102011
