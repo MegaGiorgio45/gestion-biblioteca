@@ -1,5 +1,4 @@
-package main.java.biblioteca1;
-
+package biblioteca1;
 import java.util.List;
 import java.util.Scanner;
 

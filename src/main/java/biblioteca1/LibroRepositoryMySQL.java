@@ -1,5 +1,4 @@
-package main.java.biblioteca1;
-
+package biblioteca1;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,7 +16,7 @@ public class LibroRepositoryMySQL implements LibroRepository {
      * Obtiene el listado completo de libros registrados en la base de datos MySQL.
      * 
      * @return una lista de objetos {@see Libro} con todos los registros encontrados en la base de datos SQL.
-     * @see main.java.biblioteca1.LibroRepository#obtenerTodos()
+     * @see LibroRepository#obtenerTodos()
      */
     @Override
     public List<Libro> obtenerTodos() {
@@ -51,7 +50,8 @@ public class LibroRepositoryMySQL implements LibroRepository {
     /**    
      * Busca libros cuyo título contenga el fragmento especificado en la base de datos MySQL.
      * @return una lista de objetos {@see Libro} cuyo título corresponde con el string proporcionado.
-     * @see main.java.biblioteca1.LibroRepository#buscarPorTitulo(java.lang.String)
+     * @see LibroRepository#buscarPorTitulo(java.lang.String)
+     * 
      */
     @Override
     public List<Libro> buscarPorTitulo(String titulo) {
@@ -89,7 +89,7 @@ public class LibroRepositoryMySQL implements LibroRepository {
     /**    
      * Busca libros cuyo autor contenga el fragmento especificado en la base de datos MySQL.
      * @return una lista de objetos {@see Libro} cuyo autor corresponde con el string proporcion
-     * @see main.java.biblioteca1.LibroRepository#buscarPorAutor(java.lang.String)
+     * @see LibroRepository#buscarPorAutor(java.lang.String)
      */
     @Override
     public List<Libro> buscarPorAutor(String autor) {
@@ -127,7 +127,7 @@ public class LibroRepositoryMySQL implements LibroRepository {
     /**
      * Filtra la lista de libros cuyo precio se encuentre dentro del rango inclusivo especificado en la base de datos MySQL.
      * @return una lista de objetos {@see Libro} cuyo precio se encuentra dentro del rango indicado.
-     * @see main.java.biblioteca1.LibroRepository#buscarPorRangoPrecio(double, double)
+     * @see LibroRepository#buscarPorRangoPrecio(double, double)
      */
     @Override
     public List<Libro> buscarPorRangoPrecio(double minimo, double maximo) {
@@ -166,7 +166,7 @@ public class LibroRepositoryMySQL implements LibroRepository {
     /**
      * Busca libros cuyo stock sea menor al valor especificado en la base de datos MySQL.
      * @return una lista de objetos {@see Libro} cuyo stock es menor al valor indicado.
-     * @see main.java.biblioteca1.LibroRepository#buscarPorStockMinimo(int)
+     * @see LibroRepository#buscarPorStockMinimo(int)
      */
     @Override
     public List<Libro> buscarPorStockMinimo(int stock) {
@@ -204,7 +204,7 @@ public class LibroRepositoryMySQL implements LibroRepository {
     /**
      * Inserta un nuevo objeto en el almacenamiento persistente de la base de datos MySQL.
      * @param libro el objeto Libro que se va a almacenar.
-     * @see main.java.biblioteca1.LibroRepository#insertar(main.java.biblioteca1.Libro)
+     * @see LibroRepository#insertar(Libro)
      */
     @Override
     public void insertar(Libro libro) {
@@ -228,7 +228,7 @@ public class LibroRepositoryMySQL implements LibroRepository {
     /**
      * Elimina del registro los datos del libro cuyo título coincida exactamente con el texto recibido en la base de datos MySQL.
      * @param titulo el título del libro a eliminar.
-     * @see main.java.biblioteca1.LibroRepository#eliminarPorTitulo(java.lang.String)
+     * @see LibroRepository#eliminarPorTitulo(java.lang.String)
      */
     @Override
     public void eliminarPorTitulo(String titulo) {
@@ -249,7 +249,7 @@ public class LibroRepositoryMySQL implements LibroRepository {
     /**
      * Copia todos los libros del repositorio actual al repositorio de destino.
      * @param destino el repositorio de destino donde se copiarán los libros.
-     * @see main.java.biblioteca1.LibroRepository#copiarA(main.java.biblioteca1.LibroRepository)
+     * @see LibroRepository#copiarA(LibroRepository)
      */ 
     @Override
     public void copiarA(LibroRepository destino) {

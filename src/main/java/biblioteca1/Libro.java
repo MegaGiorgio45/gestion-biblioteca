@@ -1,4 +1,4 @@
-package main.java.biblioteca1;
+package biblioteca1;
 
 
 /**
@@ -14,11 +14,11 @@ public class Libro {
     public int stock;
     /**
      * Constructor de la clase Libro.
-     * @param id 
-     * @param titulo
-     * @param autor
-     * @param precio
-     * @param stock
+     * @param id identificador único del libro.
+     * @param titulo título del libro.
+     * @param autor autor del libro.
+     * @param precio precio del libro.
+     * @param stock cantidad disponible del libro.
      */
     public Libro(int id, String titulo, String autor, double precio, int stock) {
         this.id = id;
