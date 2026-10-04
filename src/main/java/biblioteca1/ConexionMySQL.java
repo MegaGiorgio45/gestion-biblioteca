@@ -1,4 +1,4 @@
-package biblioteca1;
+package main.java.biblioteca1;
 
 import io.github.cdimascio.dotenv.Dotenv;
 import io.github.cdimascio.dotenv.DotenvException;
