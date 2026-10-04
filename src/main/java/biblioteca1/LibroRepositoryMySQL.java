@@ -201,6 +201,11 @@ public class LibroRepositoryMySQL implements LibroRepository {
         return libros;
     }
 
+    /**
+     * Inserta un nuevo objeto en el almacenamiento persistente de la base de datos MySQL.
+     * @param libro el objeto Libro que se va a almacenar.
+     * @see main.java.biblioteca1.LibroRepository#insertar(main.java.biblioteca1.Libro)
+     */
     @Override
     public void insertar(Libro libro) {
         String sql = "INSERT INTO libros (titulo, autor, precio, stock) VALUES (?, ?, ?, ?)";
@@ -220,6 +225,11 @@ public class LibroRepositoryMySQL implements LibroRepository {
         }
     }
 
+    /**
+     * Elimina del registro los datos del libro cuyo título coincida exactamente con el texto recibido en la base de datos MySQL.
+     * @param titulo el título del libro a eliminar.
+     * @see main.java.biblioteca1.LibroRepository#eliminarPorTitulo(java.lang.String)
+     */
     @Override
     public void eliminarPorTitulo(String titulo) {
         String sql = "DELETE FROM libros WHERE titulo = ?";
@@ -235,7 +245,12 @@ public class LibroRepositoryMySQL implements LibroRepository {
             System.out.println("Error al eliminar en MySQL: " + e.getMessage());
         }
     }
-
+    
+    /**
+     * Copia todos los libros del repositorio actual al repositorio de destino.
+     * @param destino el repositorio de destino donde se copiarán los libros.
+     * @see main.java.biblioteca1.LibroRepository#copiarA(main.java.biblioteca1.LibroRepository)
+     */ 
     @Override
     public void copiarA(LibroRepository destino) {
         List<Libro> libros = this.obtenerTodos();
