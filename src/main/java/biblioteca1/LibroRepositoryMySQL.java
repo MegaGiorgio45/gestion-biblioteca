@@ -7,11 +7,20 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LibroRepositoryMySQL implements LibroRepository {
 
+/**
+ * Implementación de {@see LibroRepository} que utiliza una base de datos MySQL como almacenamiento persistente.
+ * @author Guillermo
+ */
+public class LibroRepositoryMySQL implements LibroRepository {
+    /**    
+     * Obtiene el listado completo de libros registrados en la base de datos MySQL.
+     * 
+     * @return una lista de objetos {@see Libro} con todos los registros encontrados en la base de datos SQL.
+     * @see main.java.biblioteca1.LibroRepository#obtenerTodos()
+     */
     @Override
     public List<Libro> obtenerTodos() {
-
         List<Libro> libros = new ArrayList<>();
 
         String sql = "SELECT * FROM libros";
@@ -39,7 +48,11 @@ public class LibroRepositoryMySQL implements LibroRepository {
 
         return libros;
     }
-
+    /**    
+     * Busca libros cuyo título contenga el fragmento especificado en la base de datos MySQL.
+     * @return una lista de objetos {@see Libro} cuyo título corresponde con el string proporcionado.
+     * @see main.java.biblioteca1.LibroRepository#buscarPorTitulo(java.lang.String)
+     */
     @Override
     public List<Libro> buscarPorTitulo(String titulo) {
         List<Libro> libros = new ArrayList<>();
