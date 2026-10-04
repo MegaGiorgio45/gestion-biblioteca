@@ -8,14 +8,14 @@ import java.util.List;
 
 
 /**
- * Implementación de {@see LibroRepository} que utiliza una base de datos MySQL como almacenamiento persistente.
+ * Implementación de {@link LibroRepository} que utiliza una base de datos MySQL como almacenamiento persistente.
  * @author Guillermo
  */
 public class LibroRepositoryMySQL implements LibroRepository {
     /**    
      * Obtiene el listado completo de libros registrados en la base de datos MySQL.
      * 
-     * @return una lista de objetos {@see Libro} con todos los registros encontrados en la base de datos SQL.
+     * @return una lista de objetos {@link Libro} con todos los registros encontrados en la base de datos SQL.
      * @see LibroRepository#obtenerTodos()
      */
     @Override
@@ -49,7 +49,8 @@ public class LibroRepositoryMySQL implements LibroRepository {
     }
     /**    
      * Busca libros cuyo título contenga el fragmento especificado en la base de datos MySQL.
-     * @return una lista de objetos {@see Libro} cuyo título corresponde con el string proporcionado.
+     * @param titulo el fragmento de texto a buscar en los títulos de los libros.
+     * @return una lista de objetos {@link Libro} cuyo título corresponde con el string proporcionado.
      * @see LibroRepository#buscarPorTitulo(java.lang.String)
      * 
      */
@@ -88,7 +89,8 @@ public class LibroRepositoryMySQL implements LibroRepository {
 
     /**    
      * Busca libros cuyo autor contenga el fragmento especificado en la base de datos MySQL.
-     * @return una lista de objetos {@see Libro} cuyo autor corresponde con el string proporcion
+     * @param autor el fragmento de texto a buscar en los autores de los libros.
+     * @return una lista de objetos {@link Libro} cuyo autor corresponde con el string proporcionado.
      * @see LibroRepository#buscarPorAutor(java.lang.String)
      */
     @Override
@@ -126,7 +128,9 @@ public class LibroRepositoryMySQL implements LibroRepository {
 
     /**
      * Filtra la lista de libros cuyo precio se encuentre dentro del rango inclusivo especificado en la base de datos MySQL.
-     * @return una lista de objetos {@see Libro} cuyo precio se encuentra dentro del rango indicado.
+     * @param minimo el límite inferior de precio a consultar.
+     * @param maximo el límite superior de precio a consultar.
+     * @return una lista de objetos {@link Libro} cuyo precio se encuentra dentro del rango indicado.
      * @see LibroRepository#buscarPorRangoPrecio(double, double)
      */
     @Override
@@ -165,7 +169,8 @@ public class LibroRepositoryMySQL implements LibroRepository {
 
     /**
      * Busca libros cuyo stock sea menor al valor especificado en la base de datos MySQL.
-     * @return una lista de objetos {@see Libro} cuyo stock es menor al valor indicado.
+     * @param stock el valor mínimo de stock a consultar.
+     * @return una lista de objetos {@link Libro} cuyo stock es menor al valor indicado.
      * @see LibroRepository#buscarPorStockMinimo(int)
      */
     @Override

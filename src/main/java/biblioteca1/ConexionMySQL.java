@@ -15,11 +15,22 @@ import java.sql.SQLException;
  * @author Guillermo
  */
 public class ConexionMySQL {
-
+    /**
+     * Instancia de Dotenv para cargar las variables de entorno desde un archivo .env o variables.env.
+     */
     private static final Dotenv dotenv = loadDotenv();
-
+    /**
+     * URL de conexión a la base de datos MySQL obtenida desde el archivo de entorno.
+     */
     private static final String URL = dotenv.get("DB_URL");
+    /**
+     * Usuario de la base de datos MySQL obtenida desde el archivo de entorno.
+     */
     private static final String USUARIO = dotenv.get("DB_USER");
+
+    /**
+     * Contraseña de la base de datos MySQL obtenida desde el archivo de entorno.
+     */
     private static final String PASSWORD = dotenv.get("DB_PASSWORD");
 
     /**
