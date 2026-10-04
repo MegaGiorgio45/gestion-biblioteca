@@ -86,6 +86,11 @@ public class LibroRepositoryMySQL implements LibroRepository {
         return libros;
     }
 
+    /**    
+     * Busca libros cuyo autor contenga el fragmento especificado en la base de datos MySQL.
+     * @return una lista de objetos {@see Libro} cuyo autor corresponde con el string proporcion
+     * @see main.java.biblioteca1.LibroRepository#buscarPorAutor(java.lang.String)
+     */
     @Override
     public List<Libro> buscarPorAutor(String autor) {
         List<Libro> libros = new ArrayList<>();
@@ -119,6 +124,11 @@ public class LibroRepositoryMySQL implements LibroRepository {
         return libros;
     }
 
+    /**
+     * Filtra la lista de libros cuyo precio se encuentre dentro del rango inclusivo especificado en la base de datos MySQL.
+     * @return una lista de objetos {@see Libro} cuyo precio se encuentra dentro del rango indicado.
+     * @see main.java.biblioteca1.LibroRepository#buscarPorRangoPrecio(double, double)
+     */
     @Override
     public List<Libro> buscarPorRangoPrecio(double minimo, double maximo) {
         List<Libro> libros = new ArrayList<>();
@@ -130,7 +140,7 @@ public class LibroRepositoryMySQL implements LibroRepository {
 
             statement.setDouble(1, minimo);
             statement.setDouble(2, maximo);
-
+            
             try (ResultSet resultado = statement.executeQuery()) {
 
                 while (resultado.next()) {
@@ -153,6 +163,11 @@ public class LibroRepositoryMySQL implements LibroRepository {
         return libros;
     }
 
+    /**
+     * Busca libros cuyo stock sea menor al valor especificado en la base de datos MySQL.
+     * @return una lista de objetos {@see Libro} cuyo stock es menor al valor indicado.
+     * @see main.java.biblioteca1.LibroRepository#buscarPorStockMinimo(int)
+     */
     @Override
     public List<Libro> buscarPorStockMinimo(int stock) {
         List<Libro> libros = new ArrayList<>();
