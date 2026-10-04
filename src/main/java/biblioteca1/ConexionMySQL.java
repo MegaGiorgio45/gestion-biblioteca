@@ -7,6 +7,13 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+
+/**
+ * Clase de utilidad para gestionar la conexión a la base de datos MySQL.
+ * <p>
+ * ConexionMySQL
+ * @author Guillermo
+ */
 public class ConexionMySQL {
 
     private static final Dotenv dotenv = loadDotenv();
@@ -15,6 +22,11 @@ public class ConexionMySQL {
     private static final String USUARIO = dotenv.get("DB_USER");
     private static final String PASSWORD = dotenv.get("DB_PASSWORD");
 
+    /**
+     * Carga las variables de entorno desde un archivo .env o variables.env.
+     * @return un objeto Dotenv con las variables de entorno cargadas.
+     * @throws IllegalStateException si no se encuentra ningún archivo de entorno válido.
+     */
     private static Dotenv loadDotenv() {
         String workingDir = System.getProperty("user.dir");
 
@@ -38,6 +50,11 @@ public class ConexionMySQL {
         }
     }
 
+    /**
+     * Establece una conexión con la base de datos MySQL utilizando las credenciales y URL especificadas en el archivo de entorno.
+     * @return una conexión a la base de datos MySQL.
+     * @throws SQLException si ocurre un error al establecer la conexión.
+     */
     public static Connection conectar() throws SQLException {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
